@@ -20,12 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c2e237-cb83-4bf4-9c46-d00e5bacd4d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/framework/Simplex.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/framework/event/ArgumentsEvent.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/framework/event/ControllerEvent.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/framework/event/RequestEvent.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/framework/event/ResponseEvent.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/tests/IndexTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
@@ -132,7 +134,7 @@
       <workItem from="1641415210058" duration="7469000" />
       <workItem from="1641548857892" duration="383000" />
       <workItem from="1641552040187" duration="15000" />
-      <workItem from="1641921668838" duration="8975000" />
+      <workItem from="1641921668838" duration="9426000" />
     </task>
     <servers />
   </component>
