@@ -1,42 +1,37 @@
 <?php
 
+use Framework\event\RequestEvent;
+use Framework\Simplex;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
+use Symfony\Contracts\EventDispatcher\Event;
 
 
 require __DIR__ . '/../vendor/autoload.php';
+
+
 
 $request = Request::createFromGlobals();
 
 $routes = require __DIR__ . '/../src/routes.php';
 
-$context = new RequestContext();
-$context->fromRequest($request);
-
-$urlMatcher = new UrlMatcher($routes, $context);
+$urlMatcher = new UrlMatcher($routes, new RequestContext());
 
 $controllerResolver = new ControllerResolver();
 $argumentResolver = new ArgumentResolver();
+$dispatcher = new EventDispatcher();
 
-try {
+$dispatcher->addListener('kernel.request', function (RequestEvent $e){
+    dump($e);
+});
 
-//    echo '<pre>'; print_r($request);die();
-    $request->attributes->add($urlMatcher->match($request->getPathInfo()));
-    $controller = $controllerResolver->getController($request);
-    $arguments = $argumentResolver->getArguments($request, $controller);
-    $response = call_user_func_array($controller, $arguments);
+$framework = new Simplex($dispatcher ,$urlMatcher,
+    $controllerResolver, $argumentResolver);
 
-} catch (ResourceNotFoundException $e){
-    $response = new Response("La page n'existe pas", 404);
-} catch (Exception $e) {
-    $response = new Response("Une erreur est survenue", 500);
-}
-
-
+$response = $framework->handle($request);
 $response->send();
 
